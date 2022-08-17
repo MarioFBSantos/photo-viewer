@@ -1,3 +1,11 @@
-# About this project
+# Sobre o projeto
 
-The main reason about this project is study consuming APIs and styling then
+Stack do projeto:
+- Vue 2 class based
+- TypeScript
+- Quasar Framework
+- SCSS
+
+# Principal razão do projeto
+
+Estudo de consumo de APIs externas e estilização para melhoria de front-end.
