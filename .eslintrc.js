@@ -81,6 +81,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     'eslint-disable @typescript-eslint/no-unsafe-return': off,
     'javascript.validate.enable': false,
+    "vetur.validation.template": false,
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'

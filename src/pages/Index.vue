@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <grid :photos="photoList" class="q-pa-md"/>
+      <grid :photos="filteredFiles" class="q-pa-md"/>
       </div>
     </div>
   </q-page>
@@ -36,7 +36,7 @@ photoList: photoInteface= {
       download_url: '',
 };
 imageList = this.items;
-
+fFiles: any;
 get items(){
  		axios
 			.get('https://picsum.photos/v2/list?page=5&limit=35')
@@ -44,6 +44,15 @@ get items(){
 				this.photoList = response.data;
 			})
 			.catch(error => console.log(error))
+
+  return this.photoList;
+}
+
+get filteredFiles(){
+  this.fFiles = this.photoList;
+  if(this.search)  return this.fFiles.filter(({author}) => {
+    return new RegExp(this.search, 'gi').test(author);
+  });
 
   return this.photoList;
 }
