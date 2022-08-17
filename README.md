@@ -1,26 +1,11 @@
-# Quasar App (todo)
+# Sobre o projeto
 
-A Quasar Framework app
+Stack do projeto:
+- Vue 2 class based
+- TypeScript
+- Quasar Framework
+- SCSS
 
-## Install the dependencies
-```bash
-yarn
-```
+# Principal razão do projeto
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
-
-### Lint the files
-```bash
-yarn run lint
-```
-
-### Build the app for production
-```bash
-quasar build
-```
-
-### Customize the configuration
-See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+Estudo de consumo de APIs externas e estilização para melhoria de front-end.
