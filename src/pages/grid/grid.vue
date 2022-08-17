@@ -4,12 +4,10 @@
     :gutter="15"
     >
       <div v-for="(item, index) in photos" :key="item.id">
-        <div>
+        <div class="frame q-mb-md">
           <img :src="item.download_url" class="photo"/>
           <div>
-            <!-- <div>{{item.width,' x ', item.height}}</div> -->
-            <div>{{item.author}}</div>
-
+            <div class="author q-pl-xs q-pb-xs">{{item.author}}</div>
           </div>
         </div>
       </div>
@@ -34,7 +32,20 @@ photos!: photoInteface;
 </script>
 
 <style lang="scss" scoped>
+@font-face {
+  font-family: inter;
+  src: url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+}
   .photo{
-    width: 99%;
+    width: 100%;
+  }
+  .author{
+      position: inherit;
+  }
+  .frame{
+    border-radius: 3px;
+    background-color: #fff;
+    color: #000;
+    font-family: inter;
   }
 </style>
