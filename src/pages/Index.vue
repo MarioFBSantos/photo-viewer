@@ -1,7 +1,13 @@
 <template>
   <q-page class="items-center">
     <div >
-      <!-- <div>{{photoList}}</div> -->
+
+      <div class="alignBar q-pt-md">
+        <div class="searchBar">
+          <q-input borderless v-model="search" label="Borderless" class="q-px-sm"/>
+        </div>
+      </div>
+
       <grid :photos="photoList" class="q-pa-md"/>
       </div>
     </div>
@@ -20,7 +26,7 @@ import grid from './grid/grid.vue'
 
 })
 export default class PageIndex extends Vue {
-
+search = '';
 photoList: photoInteface= {
       id: 0,
       author: '',
@@ -51,6 +57,15 @@ mounted(){
 <style lang="scss" scoped>
   html{
     background-color: #666;
+  }
+  .alignBar{
+    display:flex;
+    justify-content: space-around;
+  }
+  .searchBar{
+    border-radius: 8px;
+    width: 70%;
+    background-color: #fff;
   }
   .imageCard{
     // display: flex;
