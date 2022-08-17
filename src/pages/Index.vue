@@ -1,7 +1,8 @@
 <template>
   <q-page class="items-center">
     <div >
-      <grid :photos="photoList" class="q-px-lg"/>
+      <!-- <div>{{photoList}}</div> -->
+      <grid :photos="photoList" class="q-pa-md"/>
       </div>
     </div>
   </q-page>
@@ -13,7 +14,9 @@ import axios from 'axios';
 import photoInteface from './interface/photo'
 import grid from './grid/grid.vue'
 @Component({
-  components: {grid}
+  components: {
+    grid
+    }
 
 })
 export default class PageIndex extends Vue {
@@ -30,7 +33,7 @@ imageList = this.items;
 
 get items(){
  		axios
-			.get('https://picsum.photos/v2/list?page=1&limit=15')
+			.get('https://picsum.photos/v2/list?page=5&limit=35')
 			.then(response => {
 				this.photoList = response.data;
 			})
@@ -54,15 +57,5 @@ mounted(){
     overflow: hidden;
     display: -webkit-box;
   }
-  .image{
-    width: 50%;
-    // height: 20%;
-    // display: block;
-    vertical-align: middle;
-    // display;
-  }
-  .grid{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-  }
+
 </style>

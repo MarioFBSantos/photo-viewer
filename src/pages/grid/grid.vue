@@ -1,10 +1,17 @@
 <template>
   <masonry
     :cols="3"
-    :gutter="30"
+    :gutter="15"
     >
       <div v-for="(item, index) in photos" :key="item.id">
-        <img :src="item.download_url" class="photo"/>
+        <div>
+          <img :src="item.download_url" class="photo"/>
+          <div>
+            <!-- <div>{{item.width,' x ', item.height}}</div> -->
+            <div>{{item.author}}</div>
+
+          </div>
+        </div>
       </div>
   </masonry>
 </template>
@@ -28,6 +35,6 @@ photos!: photoInteface;
 
 <style lang="scss" scoped>
   .photo{
-    width: 95%;
+    width: 99%;
   }
 </style>
