@@ -4,7 +4,7 @@
 
       <div class="alignBar q-pt-md">
         <div class="searchBar">
-          <q-input borderless v-model="search" label="Borderless" class="q-px-sm"/>
+          <q-input borderless v-model="search" label="Search" class="q-px-sm"/>
         </div>
       </div>
 
