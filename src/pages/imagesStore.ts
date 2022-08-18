@@ -1,34 +1,26 @@
-import { store } from 'quasar/wrappers';
-import Vuex from 'vuex';
+import { Module, VuexModule, Mutation, Action } from 'vuex-module-decorators'
 
-// import example from './module-example';
-// import { ExampleStateInterface } from './module-example/state';
+@Module
+export default class PhotosState extends VuexModule {
+  count = 0
 
-/*
- * If not building with SSR mode, you can
- * directly export the Store instantiation
- */
+  @Mutation
+  increment(delta: number) {
+    this.count += delta
+  }
+  @Mutation
+  decrement(delta: number) {
+    this.count -= delta
+  }
 
-export interface StateInterface {
-  // Define your own store structure, using submodules if needed
-  // example: ExampleStateInterface;
-  // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  example: unknown;
+  // action 'incr' commits mutation 'increment' when done with return value as payload
+  @Action({ commit: 'increment' })
+  incr() {
+    return 5
+  }
+  // action 'decr' commits mutation 'decrement' when done with return value as payload
+  @Action({ commit: 'decrement' })
+  decr() {
+    return 5
+  }
 }
-
-export default store(function ({ Vue }) {
-  Vue.use(Vuex);
-
-  const Store = new Vuex.Store<StateInterface>({
-    modules: {
-      // example
-    },
-
-    // enable strict mode (adds overhead!)
-    // for dev mode only
-    strict: !!process.env.DEBUGGING
-  });
-
-  return Store;
-});
-
