@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "viewer",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Photo Viewer",
@@ -7,7 +7,11 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "echo \"No test specified\" && exit 0",
+    "predeploy": "quasar dev",
+    "deploy": "gh-pages -d build",
+    "start": "quasar dev",
+    "build": "quasar dev"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
