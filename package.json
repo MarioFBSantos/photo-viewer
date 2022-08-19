@@ -5,13 +5,13 @@
   "productName": "Photo Viewer",
   "author": "MarioFBSantos <mariosantos3197@gmail.com>",
   "private": true,
+  "homepage": "https://mariofbsantos.github.io/photo-viewer/",
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "predeploy": "quasar dev",
-    "deploy": "gh-pages -d build",
+    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=master --no-git-tag-version",
     "start": "quasar dev",
-    "build": "quasar dev"
+    "build": "quasar build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.3.0",
@@ -21,6 +21,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
+    "gh-pages": "^4.0.0",
     "quasar": "^1.0.0",
     "vue-class-component": "^7.2.2",
     "vue-i18n": "^8.0.0",
@@ -36,7 +37,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^7.21.0",
     "eslint-config-prettier": "^8.1.0",
-    "eslint-plugin-vue": "^7.7.0"
+    "eslint-plugin-vue": "^7.7.0",
+    "push-dir": "^0.4.1"
   },
   "browserslist": [
     "ie >= 11",
