@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "deploy": "push-dir --dir=dist/spa --remote=pages --branch=master --no-git-tag-version",
+    "deploy": "push-dir --dir=dist/spa --remote=gh-pages --branch=master",
     "start": "quasar dev",
     "build": "quasar build"
   },
