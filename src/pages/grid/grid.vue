@@ -3,14 +3,20 @@
     :cols="3"
     :gutter="15"
     >
-      <div v-for="(item, index) in photos" :key="item.id">
-        <div class="frame q-mb-md">
-          <img :src="item.download_url" class="photo"/>
+      <q-intersection
+        transition="scale" v-for="(item, index) in photos"
+        :key="item.id"
+        once
+        >
           <div>
-            <div class="author q-pl-xs q-pb-xs">{{item.author}}</div>
+            <div class="frame q-mb-md" >
+              <img :src="item.download_url" class="photo"/>
+              <div>
+                <div class="author q-pl-xs q-pb-xs">{{item.author}}</div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+      </q-intersection>
   </masonry>
 </template>
 
@@ -27,6 +33,7 @@ export default class grid extends Vue {
 
 @Prop()
 photos!: photoInteface;
+
 
 }
 </script>
@@ -48,4 +55,10 @@ photos!: photoInteface;
     color: #000;
     font-family: inter;
   }
+
+  .frame:hover{
+    box-shadow: 1px 1px rgba(197, 197, 197, 0.151);
+    width: 101%;
+  }
+
 </style>

@@ -8,8 +8,8 @@
       </div>
       <grid :photos="filteredFiles" class="q-pa-md"/>
       <div class="buttonsContainer">
-        <q-btn label="Previous page" @click="backPage()" class="bg-white" text-color="black" :disable="page === 1"></q-btn>
-        <q-btn label="Next page" @click="forwardPage()" class="bg-white" text-color="black"></q-btn>
+        <q-btn label="Previous page" @click="Page(-1)" class="bg-white" text-color="black" :disable="page === 1"></q-btn>
+        <q-btn label="Next page" @click="Page(+1)" class="bg-white" text-color="black"></q-btn>
       </div>
     </div>
   </q-page>
@@ -37,7 +37,7 @@ photoList: photoInteface= {
       download_url: '',
 };
 imageList = this.items;
-fFiles: any;
+fFiles: photoInteface | any = this.photoList;
 page: number = 1;
 timer:any = 0;
 @Watch('limit')
@@ -45,44 +45,34 @@ onLimitChange(){
   this.photoList =  this.items;
 }
 
-get items(){
-const url = `https://picsum.photos/v2/list?page=${this.page}&limit=15`
-  axios
-			.get(url)
-			.then(response => {
-				this.photoList = response.data;
-			})
-			.catch(error => console.log(error))
+    get items(){
+    const url = `https://picsum.photos/v2/list?page=${this.page}&limit=15`
+      this.$axios
+          .get(url)
+          .then(response => {
+            this.photoList = response.data;
+          })
+          .catch(error => console.log(error))
 
-  return this.photoList;
-}
+      return this.photoList;
+    }
 
-get filteredFiles(){
-  this.fFiles = this.photoList;
-  if(this.search)  return this.fFiles.filter(({author}) => {
-    return new RegExp(this.search, 'gi').test(author);
-  });
+    get filteredFiles(){
+      this.fFiles = this.photoList;
+      if(this.search)  return this.fFiles.filter(({author}) => {
+        return new RegExp(this.search, 'gi').test(author);
+      });
 
-  return this.photoList;
-}
+      return this.photoList;
+    }
 
-forwardPage(){
-  this.page = this.page + 1;
-  console.log(this.page);
-    this.showLoading();
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-  this.items;
-}
-
-backPage(){
-  this.page = this.page - 1;
-  console.log(this.page);
-  this.showLoading();
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-  this.items;
-}
+    Page(orientation: number){
+        this.page = this.page + orientation;
+      this.showLoading();
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      this.items;
+    }
 
     showLoading () {
       this.$q.loading.show()
@@ -92,10 +82,10 @@ backPage(){
       }, 1000)
     }
 
-mounted(){
-  this.page = 1;
-  this.photoList =  this.items;
-}
+    mounted(){
+      this.page = 1;
+      this.photoList =  this.items;
+    }
 }
 </script>
 
